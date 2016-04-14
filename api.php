@@ -5,7 +5,7 @@ include_once("config.inc.php");
 MYSQL_CONNECT("" . $host . "","" . $user. "","" . $password . "");
 MYSQL_SELECT_DB( "Test") or die( "Unable to select database");
 if ($request_type == "GET") {
-	// GET a single provider
+	// GET a single provider.
 	if ($_GET['id']) {
 		$json = getTheData($_GET['id']);
 		if (!$json) {
@@ -15,7 +15,7 @@ if ($request_type == "GET") {
 			echo json_encode($json);
 		}			
 	}
-	// GET the list of services
+	// GET the list of services.
 	else if ($_GET['services']) {
 		$query = "SELECT id,service from services order by service";
 		$result = MYSQL_QUERY($query);
@@ -26,7 +26,7 @@ if ($request_type == "GET") {
 		$json = $rows;
 		echo json_encode($json);
 	}
-	// GET all providers
+	// GET all providers.
 	else {
 		$query = "SELECT id,name,location,phone from providers order by name";
 		$result = MYSQL_QUERY($query);
@@ -48,7 +48,7 @@ if ($request_type == "GET") {
 		echo json_encode($json);
 	}
 }
-// UPDATE a provider
+// UPDATE a provider.
 else if ($request_type == "PUT") {
 	parse_str(file_get_contents("php://input"),$put_vars);
 	if (($put_vars['name'] == "") || ($put_vars['location'] == "") || ($put_vars['id'] == "")) {
@@ -74,7 +74,7 @@ else if ($request_type == "PUT") {
 		echo json_encode($json);
 	}
 }
-// ADD a new provider
+// ADD a new provider.
 else if ($request_type == "POST") {
 	if (($_POST['name'] == "") || ($_POST['location'] == "")) {
 		header("HTTP/1.0 422 Validation Failed");		
@@ -100,7 +100,7 @@ else if ($request_type == "POST") {
 		echo json_encode($json);
 	}
 }
-// DELETE a provider
+// DELETE a provider.
 else if ($request_type == "DELETE") {
 	parse_str(file_get_contents("php://input"),$put_vars);
 	$query = "DELETE from providers where id = " . $put_vars['id'] . "";		
@@ -109,7 +109,7 @@ else if ($request_type == "DELETE") {
 	$result1 = MYSQL_QUERY($query1);
 	header("HTTP/1.0 204 Provider Deleted");
 }
-// helper function to get the data for a given id
+// helper function to get the data for a given id.
 function getTheData($id) {
 	$query = "SELECT id,name,location,phone from providers where id=" . $id . "";		
 	$result = MYSQL_QUERY($query);
