@@ -1,7 +1,8 @@
-$( document ).ready(function() {
+$(document).ready(function() {
 	"use strict";
 	var data = Object.create(null);	
 	data.services = "services";
+	// GET the services.
 	$.ajax({		
 		type: "GET",
 		url: "api.php",
@@ -14,6 +15,7 @@ $( document ).ready(function() {
         });
     }
 	});
+	// GET the providers.
 	$.ajax({
 		type: "GET",
 		url: "api.php",
@@ -25,6 +27,7 @@ $( document ).ready(function() {
     }
 	});	
 });
+// Hide divs if necessary.
 function hideDivs(show,hide1,hide2) {
 	"use strict";
 	$(show).toggle();
@@ -34,6 +37,7 @@ function hideDivs(show,hide1,hide2) {
 	$("#confirmnew").hide();
 	$('#newform')[0].reset();	
 }	
+// GET the data for a specific provider for editing.
 function getData() {
 	"use strict";	
 	$("#services option:selected").removeAttr("selected");
@@ -63,6 +67,7 @@ function getData() {
 		}		
 	});
 }
+// Save the data for a provider that's been edited.
 function saveData() {
 	"use strict";
 	var id = $("#providers").val();
@@ -95,9 +100,9 @@ function saveData() {
 		failure: function() {
 			$("#failure").show();
 		}
-	});
-	
+	});	
 }
+// Delete a provider.
 function deleteData() {
 	"use strict";
 	var id = $("#providers").val();	
@@ -119,6 +124,7 @@ function deleteData() {
 	});
 	$("#providers option:selected").remove();
 }
+// Save the data for a new provider.
 function saveNew() {
 	"use strict";
 	var this_name = $('#name_new').val();
@@ -130,8 +136,7 @@ function saveNew() {
 	}
 	if (!this_location) {
 		alert("You must enter a location");
-	}
-	
+	}	
 	var data = Object.create(null);
 	data.name = this_name;
 	data.phone = this_phone;
@@ -151,6 +156,5 @@ function saveNew() {
 			 $("#confirmnew").show();
 			 $('#newform')[0].reset();			 
 		}
-	});
-	
+	});	
 }
