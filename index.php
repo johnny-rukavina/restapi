@@ -15,8 +15,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>	
 </head>
-<body>
-	   
+<body>	   
 <div class="container">
 	<h1>JSON REST API DEMO</h1>		
 </div>
@@ -93,5 +92,4 @@
 </div>
 </body>
 </html>
-
 <script type="text/javascript" src="demo.js"></script>
