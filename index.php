@@ -17,7 +17,7 @@
 </head>
 <body>	   
 <div class="container">
-	<h1>JSON REST API DEMO</h1>		
+	<h1>JSON REST API DEMO VERSION 2</h1>		
 </div>
 <div class="container">	
 	<div>
